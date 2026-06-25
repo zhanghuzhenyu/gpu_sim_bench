@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="slope_cube_collision">
+  <compiler angle="degree" coordinate="local" inertiafromgeom="true"/>
+
+  <option timestep="0.01" iterations="100" solver="Newton" gravity="0 0 -9.81">
+    <flag eulerdamp="enable"/>
+  </option>
+
+  <visual>
+    <map force="0.1" zfar="30"/>
+    <global offwidth="1280" offheight="720" elevation="-20" azimuth="120"/>
+  </visual>
+
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1=".3 .5 .7" rgb2="0 0 0" width="32" height="512"/>
+    <texture name="grid" type="2d" builtin="checker" width="512" height="512" rgb1=".1 .2 .3" rgb2=".2 .3 .4"/>
+    <material name="grid" texture="grid" texrepeat="8 8" texuniform="true" reflectance=".2"/>
+  </asset>
+
+  <default>
+    <!-- Armature and damping are crucial for stabilizing 5g cubes under gravity -->
+    <joint damping="0.01" armature="0.001"/>
+    <!-- Soften contacts to avoid solver over-correction -->
+    <geom friction="0.35 0.25 0.0001" solref="0.01 1.0" solimp="0.95 0.99 0.001"/>
+  </default>
+
+  <worldbody>
+    <geom name="ground_infinite" type="plane" size="20 20 0.1" pos="0 0 0" material="grid" friction="0.5 0.35 0.0001"/>
+    <body name="ground_plane" pos="0.3 0.0 0.01">
+      <geom type="box" size="0.3 0.3 0.01" rgba="0.7 0.5 0.3 1" friction="0.65 0.45 0.0001"/>
+    </body>
+    <body name="slope" pos="-0.28191 0.0 0.12261" quat="0.9848078 0 0.1736482 0">
+      <geom type="box" size="0.3 0.05 0.01" rgba="0.6 0.4 0.2 1" friction="0.35 0.25 0.0001"/>
+    </body>
+    <body name="ball" pos="-0.22552 0.00000 0.13135">
+      <geom name="ball_geom" type="sphere" size="0.0175" rgba="0.8 0.2 0.2 1" mass="0.17782" friction="0.35 0.25 0.0001"/>
+      <freejoint name="ball_joint"/>
+    </body>
+    <body name="cube0" pos="0.06000 -0.02000 0.03010">
+      <geom type="box" size="0.01000 0.01000 0.01000" rgba="0.30 0.5 0.70 1" mass="0.005"/>
+      <freejoint name="cube_joint0"/>
+    </body>
+    <body name="cube1" pos="0.06000 0.00000 0.03010">
+      <geom type="box" size="0.01000 0.01000 0.01000" rgba="0.30 0.5 0.70 1" mass="0.005"/>
+      <freejoint name="cube_joint1"/>
+    </body>
+    <body name="cube2" pos="0.06000 0.02000 0.03010">
+      <geom type="box" size="0.01000 0.01000 0.01000" rgba="0.30 0.5 0.70 1" mass="0.005"/>
+      <freejoint name="cube_joint2"/>
+    </body>
+    <body name="cube3" pos="0.08000 -0.02000 0.03010">
+      <geom type="box" size="0.01000 0.01000 0.01000" rgba="0.30 0.5 0.70 1" mass="0.005"/>
+      <freejoint name="cube_joint3"/>
+    </body>
+    <body name="cube4" pos="0.08000 0.00000 0.03010">
+      <geom type="box" size="0.01000 0.01000 0.01000" rgba="0.30 0.5 0.70 1" mass="0.005"/>
+      <freejoint name="cube_joint4"/>
+    </body>
+    <body name="cube5" pos="0.08000 0.02000 0.03010">
+      <geom type="box" size="0.01000 0.01000 0.01000" rgba="0.30 0.5 0.70 1" mass="0.005"/>
+      <freejoint name="cube_joint5"/>
+    </body>
+    <body name="cube6" pos="0.10000 -0.02000 0.03010">
+      <geom type="box" size="0.01000 0.01000 0.01000" rgba="0.30 0.5 0.70 1" mass="0.005"/>
+      <freejoint name="cube_joint6"/>
+    </body>
+    <body name="cube7" pos="0.10000 0.00000 0.03010">
+      <geom type="box" size="0.01000 0.01000 0.01000" rgba="0.30 0.5 0.70 1" mass="0.005"/>
+      <freejoint name="cube_joint7"/>
+    </body>
+    <body name="cube8" pos="0.10000 0.02000 0.03010">
+      <geom type="box" size="0.01000 0.01000 0.01000" rgba="0.30 0.5 0.70 1" mass="0.005"/>
+      <freejoint name="cube_joint8"/>
+    </body>
+    <body name="cube9" pos="0.06000 -0.02000 0.05010">
+      <geom type="box" size="0.01000 0.01000 0.01000" rgba="0.50 0.5 0.50 1" mass="0.005"/>
+      <freejoint name="cube_joint9"/>
+    </body>
+    <body name="cube10" pos="0.06000 0.00000 0.05010">
+      <geom type="box" size="0.01000 0.01000 0.01000" rgba="0.50 0.5 0.50 1" mass="0.005"/>
+      <freejoint name="cube_joint10"/>
+    </body>
+    <body name="cube11" pos="0.06000 0.02000 0.05010">
+      <geom type="box" size="0.01000 0.01000 0.01000" rgba="0.50 0.5 0.50 1" mass="0.005"/>
+      <freejoint name="cube_joint11"/>
+    </body>
+    <body name="cube12" pos="0.08000 -0.02000 0.05010">
+      <geom type="box" size="0.01000 0.01000 0.01000" rgba="0.50 0.5 0.50 1" mass="0.005"/>
+      <freejoint name="cube_joint12"/>
+    </body>
+    <body name="cube13" pos="0.08000 0.00000 0.05010">
+      <geom type="box" size="0.01000 0.01000 0.01000" rgba="0.50 0.5 0.50 1" mass="0.005"/>
+      <freejoint name="cube_joint13"/>
+    </body>
+    <body name="cube14" pos="0.08000 0.02000 0.05010">
+      <geom type="box" size="0.01000 0.01000 0.01000" rgba="0.50 0.5 0.50 1" mass="0.005"/>
+      <freejoint name="cube_joint14"/>
+    </body>
+    <body name="cube15" pos="0.10000 -0.02000 0.05010">
+      <geom type="box" size="0.01000 0.01000 0.01000" rgba="0.50 0.5 0.50 1" mass="0.005"/>
+      <freejoint name="cube_joint15"/>
+    </body>
+    <body name="cube16" pos="0.10000 0.00000 0.05010">
+      <geom type="box" size="0.01000 0.01000 0.01000" rgba="0.50 0.5 0.50 1" mass="0.005"/>
+      <freejoint name="cube_joint16"/>
+    </body>
+    <body name="cube17" pos="0.10000 0.02000 0.05010">
+      <geom type="box" size="0.01000 0.01000 0.01000" rgba="0.50 0.5 0.50 1" mass="0.005"/>
+      <freejoint name="cube_joint17"/>
+    </body>
+    <body name="cube18" pos="0.06000 -0.02000 0.07010">
+      <geom type="box" size="0.01000 0.01000 0.01000" rgba="0.70 0.5 0.30 1" mass="0.005"/>
+      <freejoint name="cube_joint18"/>
+    </body>
+    <body name="cube19" pos="0.06000 0.00000 0.07010">
+      <geom type="box" size="0.01000 0.01000 0.01000" rgba="0.70 0.5 0.30 1" mass="0.005"/>
+      <freejoint name="cube_joint19"/>
+    </body>
+    <body name="cube20" pos="0.06000 0.02000 0.07010">
+      <geom type="box" size="0.01000 0.01000 0.01000" rgba="0.70 0.5 0.30 1" mass="0.005"/>
+      <freejoint name="cube_joint20"/>
+    </body>
+    <body name="cube21" pos="0.08000 -0.02000 0.07010">
+      <geom type="box" size="0.01000 0.01000 0.01000" rgba="0.70 0.5 0.30 1" mass="0.005"/>
+      <freejoint name="cube_joint21"/>
+    </body>
+    <body name="cube22" pos="0.08000 0.00000 0.07010">
+      <geom type="box" size="0.01000 0.01000 0.01000" rgba="0.70 0.5 0.30 1" mass="0.005"/>
+      <freejoint name="cube_joint22"/>
+    </body>
+    <body name="cube23" pos="0.08000 0.02000 0.07010">
+      <geom type="box" size="0.01000 0.01000 0.01000" rgba="0.70 0.5 0.30 1" mass="0.005"/>
+      <freejoint name="cube_joint23"/>
+    </body>
+    <body name="cube24" pos="0.10000 -0.02000 0.07010">
+      <geom type="box" size="0.01000 0.01000 0.01000" rgba="0.70 0.5 0.30 1" mass="0.005"/>
+      <freejoint name="cube_joint24"/>
+    </body>
+    <body name="cube25" pos="0.10000 0.00000 0.07010">
+      <geom type="box" size="0.01000 0.01000 0.01000" rgba="0.70 0.5 0.30 1" mass="0.005"/>
+      <freejoint name="cube_joint25"/>
+    </body>
+    <body name="cube26" pos="0.10000 0.02000 0.07010">
+      <geom type="box" size="0.01000 0.01000 0.01000" rgba="0.70 0.5 0.30 1" mass="0.005"/>
+      <freejoint name="cube_joint26"/>
+    </body>
+  </worldbody>
+</mujoco>

@@ -1,0 +1,37 @@
+<mujoco model="slope_ball_cube">
+  <compiler angle="degree" coordinate="local"/>
+  
+  <option timestep="0.002" iterations="50" solver="Newton" jacobian="auto">
+    <flag contact="enable" gravity="enable"/>
+  </option>
+  
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0.0 0.0 0.0" 
+             width="512" height="512"/>
+    <texture name="groundplane" type="2d" builtin="checker" mark="edge" 
+             rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" 
+             markrgb="0.8 0.8 0.8" width="300" height="300"/>
+    <material name="groundplane" texture="groundplane" texuniform="true" 
+              texrepeat="5 5" reflectance="0.2"/>
+  </asset>
+  
+  <worldbody>
+    <!-- Ground plane -->
+    <geom name="ground" type="plane" size="10 10 0.1" material="groundplane" 
+          friction="1.0 0.5 0.0001" solref="0.01 1"/>
+    
+    <!-- Lighting -->
+    <light name="light1" pos="0 0 8" dir="0 0 -1" diffuse="0.8 0.8 0.8" 
+           specular="0.3 0.3 0.3" directional="false" castshadow="true"/>
+    <light name="light2" pos="3 3 6" dir="-1 -1 -1" diffuse="0.5 0.5 0.5" 
+           specular="0.2 0.2 0.2" directional="false"/>
+    
+    <!-- Camera -->
+    <camera name="fixed" pos="5 5 4" xyaxes="-1 1 0 -0.4 -0.4 1" mode="fixed"/>
+    <camera name="side" pos="0 -8 3" xyaxes="1 0 0 0 0.3 1" mode="fixed"/>
+    <camera name="top" pos="0 0 12" xyaxes="1 0 0 0 1 0" mode="fixed"/>
+    
+    <!-- DYNAMIC_CONTENT -->
+    
+  </worldbody>
+</mujoco>

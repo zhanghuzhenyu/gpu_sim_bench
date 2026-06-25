@@ -1,0 +1,44 @@
+ground_plane:
+  length: 0.6
+  width: 0.6
+  thickness: 0.02
+  center_x: 0.3
+  center_y: 0.0
+  center_z: 0.01
+  static_friction: 0.65
+  dynamic_friction: 0.45
+  restitution: 0.40
+slope:
+  angle_deg: 20.0
+  length: 0.6
+  width: 0.1
+  thickness: 0.02
+  center_x: -0.28191
+  center_y: 0.0
+  center_z: 0.12261
+  static_friction: 0.35
+  dynamic_friction: 0.25
+  restitution: 0.40
+ball:
+  radius: 0.0175
+  mass: 0.17782
+  center_x: -0.22552
+  center_y: 0.0
+  center_z: 0.13135
+  static_friction: 0.35
+  dynamic_friction: 0.25
+  restitution: 0.55
+cube:
+  size: 0.02
+  mass: 0.005
+  static_friction: 0.35
+  dynamic_friction: 0.25
+  restitution: 0.40
+array:
+  m: 3
+  spacing: 0.02
+  center_x: 0.08
+  center_y: 0.0
+  center_z: 0.05
+sim_dt: 0.01
+ctrl_dt: 0.01

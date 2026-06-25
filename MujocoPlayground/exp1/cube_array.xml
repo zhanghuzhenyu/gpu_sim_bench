@@ -1,0 +1,36 @@
+<!-- Cube Array Free Fall Scene for GPU Benchmarking -->
+<mujoco model="cube_array_freefall">
+  <compiler angle="radian" autolimits="true"/>
+  
+  <option timestep="0.002" gravity="0 0 -9.81">
+    <flag contact="enable" warmstart="enable"/>
+  </option>
+
+  <visual>
+    <headlight ambient="0.5 0.5 0.5" diffuse="0.8 0.8 0.8" specular="0.3 0.3 0.3"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+    <global azimuth="120" elevation="-20"/>
+  </visual>
+
+  <asset>
+    <texture name="grid" type="2d" builtin="checker" width="512" height="512" 
+             rgb1=".1 .2 .3" rgb2=".2 .3 .4"/>
+    <material name="grid" texture="grid" texrepeat="1 1" texuniform="true" 
+              reflectance=".2"/>
+    <material name="cube_mat" rgba="0.8 0.2 0.2 1"/>
+  </asset>
+
+  <worldbody>
+    <light directional="true" diffuse=".8 .8 .8" specular="0.3 0.3 0.3" 
+           pos="0 0 5" dir="0 0 -1"/>
+    <light directional="true" diffuse=".4 .4 .4" specular="0.2 0.2 0.2" 
+           pos="0 0 5" dir="0 1 -1"/>
+    
+    <!-- Ground plane -->
+    <geom name="floor" type="plane" size="10 10 0.1" material="grid" 
+          condim="3" friction="1 0.005 0.0001"/>
+    
+    <!-- Camera -->
+    <camera name="track" mode="fixed" pos="3 3 2" xyaxes="-1 1 0 -0.5 -0.5 1"/>
+  </worldbody>
+</mujoco>

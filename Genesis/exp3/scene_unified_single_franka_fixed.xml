@@ -1,0 +1,23 @@
+<mujoco model="panda_unified_single_fixed">
+  <!-- Unified scene for Exp3: single fixed-base Franka at origin, no ground, no objects -->
+  <include file="panda.xml"/>
+
+  <statistic center="0.3 0 0.4" extent="1"/>
+
+  <!-- Unified benchmark options -->
+  <option timestep="0.01" integrator="implicitfast">
+    <flag eulerdamp="disable"/>
+  </option>
+
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+    <global azimuth="120" elevation="-20"/>
+    <scale contactwidth="0.075" contactheight="0.025" forcewidth="0.05" com="0.05" framewidth="0.01" framelength="0.2"/>
+  </visual>
+
+  <!-- Add a light only. The robot is defined in panda.xml under <worldbody> with base fixed to world. -->
+  <worldbody>
+    <light pos="0 0 1.5" dir="0 0 -1" directional="true"/>
+  </worldbody>
+</mujoco>
