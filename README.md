@@ -12,7 +12,6 @@ The current repository layout is simulator-centric: each simulator has its own f
 
 ## Paper
 
-- Paper PDF: [IROS26_1118_MS.pdf](./IROS26_1118_MS.pdf)
 
 The paper evaluates the trade-offs among:
 
@@ -34,7 +33,6 @@ across the following simulators:
 
 ```text
 .
-├── IROS26_1118_MS.pdf
 ├── benchmark_defaults.py
 ├── Genesis/
 ├── IsaacLab/
